@@ -40,10 +40,6 @@
 
 하지만, 매개변수가 10개, 20개가 된다면 어떻게 될까요?
 
-<div class="div-post-img">
-  <img src="{{ site.url }}/assets/img/web/02/wtf.png" width="40%" height="30%" />
-</div>
-
 분명 생성자만 작성하다가 지칠 것입니다.
 
 즉, 점층적 생성자 패턴도 쓸 수는 있지만, 코드를 작성하기 어렵고 가독성도 떨어집니다.
