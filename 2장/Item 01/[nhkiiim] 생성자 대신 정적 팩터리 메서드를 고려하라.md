@@ -62,6 +62,8 @@ public class Character {
 <br>
 
 ## 3. 정적 팩토리 메서드가 생성자보다 좋은 이유
+- 항상 정적 팩토리 메서드가 좋은 건 아님!
+
 1) 이름을 가질 수 있다
 ```java
 Character warrior = Character.newWarrior();
