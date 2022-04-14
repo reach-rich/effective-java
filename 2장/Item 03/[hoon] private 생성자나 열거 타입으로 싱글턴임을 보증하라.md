@@ -61,7 +61,7 @@ static 키워드를 통해 프로그램 초기화 시에 단 한번만 객체가
 
 * 결과
 
-<img src="{{ site.url }}/assets/img/effective_java/item3/reflection.png" width="40%" height="30%" />
+<img src="/img/reflection.png" width="40%" height="30%" />
 
 > * Reflection API
 >
