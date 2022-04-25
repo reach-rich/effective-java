@@ -113,7 +113,7 @@ private static long sum(){
 }
 ```
 
-- 양의 정수의 총합을 구하기 위해 long tkdud
+- 양의 정수의 총합을 구하기 위해 long 사용
 - sum을 long으로 선언해야지!! (노 객체)
 - 박싱된 기본 타입 보다는 기본 타입을 사용하자!
 
