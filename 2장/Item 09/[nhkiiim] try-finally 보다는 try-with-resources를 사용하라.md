@@ -32,7 +32,7 @@ static void copy(String src, String dst) throws IOException {
 			byte[] buf = new byte[BUFFER_SIZE];
 			int n;
 			while ((n = in.read(buf)) >= 0)
-			out.write(buf, 0, n);
+				out.write(buf, 0, n);
 		} finally {
 			out.close();
 		}
