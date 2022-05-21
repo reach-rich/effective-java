@@ -108,7 +108,7 @@ hashTable이 마치 연결리스트처럼 동작해서
 평균 수행 시간이 O(1)인 hashTable이 O(n)으로 느려지게 됩니다.
 
 <div class="div-post-img">
-  <img src="{{ site.url }}/assets/img/effective_java/item11/hashtable-collision.png" width="40%" height="30%" />
+  <img src="https://ss-hoon.github.io/assets/img/effective_java/item11/hashtable-collision.png" width="40%" height="30%" />
 </div>
 
 그렇다면 어떻게 hashCode를 작성하면 될까요?
