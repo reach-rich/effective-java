@@ -206,8 +206,8 @@ hashMap이나 hashSet과 같은 hashCode를 사용하는 컬렉션에서
 
 ## 7. 참조
 
-* [https://en.wikipedia.org/wiki/Hash_function](https://en.wikipedia.org/wiki/Hash_function){:target="_blank"}
+* [https://en.wikipedia.org/wiki/Hash_function](https://en.wikipedia.org/wiki/Hash_function)
 
-* [https://100100e.tistory.com/352](https://100100e.tistory.com/352){:target="_blank"}
+* [https://100100e.tistory.com/352](https://100100e.tistory.com/352)
 
-* [https://k3068.tistory.com/m/63](https://k3068.tistory.com/m/63){:target="_blank"}
+* [https://k3068.tistory.com/m/63](https://k3068.tistory.com/m/63)
