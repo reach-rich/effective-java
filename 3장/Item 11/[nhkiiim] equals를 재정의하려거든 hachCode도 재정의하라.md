@@ -90,6 +90,73 @@ public int hashCode() {return 42;}
 ### 5. hashCode 메서드가 동치인 인스턴스에 대해 같은 해시코드를 반환하는지 확인해 보자!
 - 직관을 검증할 단위 테스트!
 
-```java
+- 전형적인 hashCode 메서드
 
+```java
+@Override
+public int hashCode(){
+  int result = Short.hashCode(areaCode);
+  result = 31 * result + Short.hashCode(prefix);
+  result = 31 * result + Short.hashCode(lineNum);
+  return result;
+}
 ```
+- 동치인 PhoneNumber 인스턴스들은 같은 해시코드를 가질 것이 확실함!
+- 근데 무슨 소리인지 잘 모르겠다 (수학 바보 김씨)
+
+
+#
+### 6. Object 클래스가 제공하는 hash 메서드
+- Object 클래스는 해시코드를 계산해주는 정적 메서드인 hash를 제공한다 (그럼 이걸 쓰자)
+- 단 한줄로도 작성 간으하지만 속도는 더 느리다 (그럼 좀 문제읶군)
+- 입력 인수를 받기 위한 배열이 만들어지고 입력중 기본 타입이 있다면 박싱과 언박싱을 거쳐야하기 때문~!
+- 그러니 성능에 민간하지 않을 때만 사용해라
+
+```java
+@Override
+public int hashCode() {
+  return Objects.hash(lineNum, prefix, areaCode);
+}
+```
+
+#
+### 7. 그 이외의 방법~!!
+- 클래스가 불변이고 해시코드를 계산하는 비용이 크다면 ? -> 캐싱 방식을 고려하라~!!
+  - 어떤 타입의 객체가 주로 해시의 키로 사용될 것 같다면 인스턴스가 만들어질 때 해시코드를 계산해둬라
+
+- 혜시의 키로 사용되지 않는 경우라면 hashCode가 처음 불릴 때 계산하는 지연 초기화 전략도 코려해라
+  - 필드를 지연 초기화 하려면 그 클래스 스레드를 안전하게 만들도옥 신경 써야 한다(아이템 83가사 이해하자)   
+
+```java
+ @Override
+ public int hashCode(){
+  int result = hashCode;
+  if(result==0){
+    result = Short.hashCode(areaCode);
+    returlt = 31 * result + Short.hashCOde(prefix);
+    result = 31 * result + Short.hashCode(lineNum);
+    hashCode = result;
+  }
+  return result;
+ }
+```
+
+#
+### 8. 주의 사항
+- 성능 높인다고 해시코드 계산할 때 핵심 필드를 빼먹으면 안된다~!!
+- 속도야 빨라지지만 해시 품질이 나빠져 결국에는 성능 끔직해진다.
+- 어떤 필드는 해시코드를 넓게 퍼뜨려줄지도 몰라~
+- 히필 저런 필드를 생략하면 속도가 선형으로 느려질 거야~!!
+
+- hashCode가 반환하는 값의 생성 규칙을 API 사용자에게 자세하게 공표하지는 말자~
+- 그래야 클라이언트가 이 값에 의지하지 않는다
+- String, Integer 바람직 하지 않지만 이미 글렀다~!!
+
+
+
+
+
+
+
+
+
