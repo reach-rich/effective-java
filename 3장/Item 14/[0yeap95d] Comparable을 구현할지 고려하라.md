@@ -72,7 +72,7 @@
 - ```Comparable```은 타입을 인수로 받는 제너릭 인터페이스이므로 ```compareTo```메서드의 인수타입은 컴파일타임에 정해진다
 - 입력 인수의 타입을 확인하거나 형변환 필요 x
 - 인수 타입 오류시 컴파일 자체가 x
-- ```null```을 인수르 넣어 호출하면 ```NullPointerException``` 발생해 함
+- ```null```을 인수를 넣어 호출하면 ```NullPointerException``` 발생해야함
 
 <br>
 
