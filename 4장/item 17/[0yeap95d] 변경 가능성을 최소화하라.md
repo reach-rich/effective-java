@@ -263,6 +263,6 @@ public class Complex {
 
 **생성자는 불변식 설정이 모두 완료된, 초기화가 완벽히 끝난 상태의 객체를 생성해야 한다**
 
-
+<br>
 
 ✔ java.util.concurrent 패키지의 CountDownLatch 클래스
