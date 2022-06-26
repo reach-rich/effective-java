@@ -177,6 +177,10 @@ HashSet 클래스가 상속받는 AbstractCollection 클래스의 addAll 메서�
       addCount += c.size();
       return super.addAll(c);
     }
+
+    public int getAddCount() { return addCount; }
+
+    ...
   }
 ```
 
@@ -187,7 +191,7 @@ HashSet 클래스가 상속받는 AbstractCollection 클래스의 addAll 메서�
   InstrumentedSet<String> s = new InstrumentedSet<>(new HashSet<>());
   s.addAll(List.of("상훈", "진흥", "성재", "나현"));
 
-  System.out.println(s.addCount);
+  System.out.println(s.getAddCount());
 ```
 
 예상 결과와 동일하게 4가 나오는 것을 볼 수 있습니다.
