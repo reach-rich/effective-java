@@ -92,4 +92,20 @@ static class Sub extends Super{
 
 
 
+#
+### 5. Cloneable과 Serializable의 상속 설계
+- 상속용 설계를 어렵게 만드는 친구들!
+
+- 둘 중 하나라도 구현한 클래스를 상속하는 것은 좋지 않은 설계!
+- clone과 readObject를 모두 재정의 가능 메서드를 호출해서는 안된다~
+- Serializable을 구현한 상속용 클래스가 readResolve나 write Replace 메서드를 가지면 private 아닌 proteced로 해주자!
+
+#
+### 6. 일반적인 구체 클래스
+- 전통적으로 final도 아니고 상속용으로 설계되거나 문서화되지 않음!
+- 그대로 두면 위험하기 때문에 상속용으로 설계하지 않은 클래스는 상속을 금지하자!!
+
+
+
+
 
