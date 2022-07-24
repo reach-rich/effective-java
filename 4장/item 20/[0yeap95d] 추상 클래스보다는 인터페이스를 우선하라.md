@@ -184,7 +184,7 @@ public abstract class AbstractMapEntry<K, V> implements Map.Entry<K, V> {
 - 단순 구현은 골격 구현의 작은 변종으로, `Abstarct Map.SimpleEntry`가 좋은 예시이다 
 
 - 단순 구현도 골격 구현과 같이 상속을 위해 인터페이스를 구현한 것이지만 추상클래스가 아니다
-- 단순 구현은 그래로 써도 되고 필요에 맞게 확장해도 된다
+- 단순 구현은 그대로 써도 되고 필요에 맞게 확장해도 된다
 
 <br>
 
