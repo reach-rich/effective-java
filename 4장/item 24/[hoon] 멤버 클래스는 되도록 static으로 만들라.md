@@ -170,4 +170,4 @@
 
 ## 9. 참고
 
-* [우아한 테크코스 기술 블로그](https://tecoble.techcourse.co.kr/post/2020-11-05-nested-class/){:target="_blank"}
+* [우아한 테크코스 기술 블로그](https://tecoble.techcourse.co.kr/post/2020-11-05-nested-class/)
