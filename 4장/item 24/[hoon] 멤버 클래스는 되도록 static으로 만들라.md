@@ -132,7 +132,7 @@
 🔍 사용법
 
 ```java
-  public void greeting {
+  public void greeting() {
     class KoreaGreeting { ... }
     class JapanGreeting { ... }
   }
