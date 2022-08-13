@@ -12,7 +12,7 @@
 
    배열은 공변이기 때문에 `Array[Parent] parent = new Array[Child]`가 성립됩니다.
 
-   하지만 제네릭은 불공변이라서 `List<Parent> parent = new List<Child>`가 성립되지 않습니다.
+   하지만 제네릭은 불공변이라서 `List<Parent> parent = new ArrayList<Child>`가 성립되지 않습니다.
 
 2. **실체화 여부**
 
