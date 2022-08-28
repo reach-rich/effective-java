@@ -8,7 +8,7 @@
 
 ### 🏃‍♂️스터디원
 
-* [이상훈](https://github.com/ss-hoon)
-* [안진흥](https://github.com/heung27)
-* [배성재](https://github.com/0yeap95d)
 * [김나현](https://github.com/nhkiiim)
+* [배성재](https://github.com/0yeap95d)
+* [안진흥](https://github.com/heung27)
+* [이상훈](https://github.com/ss-hoon)
