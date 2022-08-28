@@ -1,6 +1,6 @@
 # Effective-Java Study
 
-"**이펙티브 자바 Effective Java 3/E**" 책을 한 주당 두 아이템씩 함께 읽고 서로 의견을 나눕니다.
+"**이펙티브 자바 Effective Java 3/E**" 책을 한 주당 두 아이템씩 읽고 서로 의견을 나눕니다.
 
 ### 📅 기간
 
