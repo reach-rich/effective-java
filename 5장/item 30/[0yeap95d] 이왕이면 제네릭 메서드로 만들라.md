@@ -31,7 +31,7 @@ public static Set union(Set s1, Set s2) {
 >Union.java:5: warning: [unchecked] unchecked call to
 >addAll(Collection<? extends E>) as a member of raw type Set
 >	result.addAll(s2);
->				 ^
+>		      ^
 >```
 >
 >- 경고를 없애려면 타입 안전하게 만들어야 한다
