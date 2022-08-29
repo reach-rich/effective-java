@@ -135,9 +135,7 @@ Stack.java:8: generic array creation
 **대다수의 제네릭 타입은 타입 매개변수에 아무런 제약을 두지 않는다** 
 
 - `Stack<Object>`, `Stack<int[]>`, `Stack<List<String>>`, `Stack` 등 어떤 참조 타입으로도 `Stack`을 만들 수 있다
-
 - 단, `Stack<int>`나 `Stack<double>`같은 기본 타입은 사용할 수 없다
-
 - 자바 제네릭 타입 시스템의 근본적인 문제이지만, 박싱된 기본 타입을 사용해 우회할 수 있다
 
 <br>
@@ -149,9 +147,7 @@ class DelayQueue<E extends Delayed> implements BlockingQueue<E>
 ```
 
 - `<E extends Delayed>`는 `java.util.concurrent.Delayed`의 하위 타입만 받는다는 뜻
-
 - `DelayQueue` 자신과 `DelayQueue`를 사용하는 클라이언트는 `DelayQueue`의 원소에서 형변환 없이 곧바로 `Delayed` 클래스의 메서드 호출 가능
-
 - 모든 타입은 자기 자신의 하위타입이므로 `DelayQueue<Delayed>`로도 사용할 수 있음
 
 <br>
