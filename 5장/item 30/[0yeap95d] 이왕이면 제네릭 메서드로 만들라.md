@@ -1,9 +1,7 @@
 ### 🔎 제네릭 메서드
 
 - 메서드를 제네릭으로 만들 수 있다
-
 - 매개변수화 타입을 받는 정적 유틸리티 메서드는 보통 제네릭
-
 - 예시로 `Collections`의 알고리즘 메서드는 모두 제네릭
 
 <br>
@@ -31,13 +29,11 @@ public static Set union(Set s1, Set s2) {
 >Union.java:5: warning: [unchecked] unchecked call to
 >addAll(Collection<? extends E>) as a member of raw type Set
 >	result.addAll(s2);
->		       ^
+>		      ^
 >```
 >
 >- 경고를 없애려면 타입 안전하게 만들어야 한다
->
 >- 메서드 선언에서의 세 집합(입력 2개, 반환 1개) 원소 타입을 타입 매개변수로 명시하고, 메서드 안에서도 이 타입 매개변수만 사용하게 수정
->
 >- 타입 매개변수 목록은 메서드의 제한자와 반환 타입 사이에 온다
 
 <br>
@@ -53,9 +49,7 @@ public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
 ```
 
 >- 단순한 제네릭 메서드라면 이 정도 충분
->
 >- 경고 없이 컴파일 되며, 타입 안전하고, 쓰기도 쉬움
->
 >- 한정적 와일드카드 타입을 사용하여 더 유연하게 개선 가능
 
 <br>
@@ -67,11 +61,8 @@ public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
 ### 💡 제네릭 싱글턴 팩터리
 
 - 불변 객체를 여러 타입으로 활용할 수 있도록 만들어야 하는 경우 사용
-
 - 제네릭은 런타임에 타입 정보가 소거되므로 하나의 객체를 어떤 타입으로든 매개변수화 가능
-
 - 요청한 타입 매개변수에 맞게 매번 그 객체를 바꿔주는 정적 팩토리 필요 (= 제네릭 싱글턴 팩터리)
-
 - `Collections.reverseOrder` 같은 함수객체나 `Collections.emptySet` 같은 컬렉션용으로 사용
 
 <br>
@@ -113,7 +104,6 @@ public static <T> UnaryOperator<T> identityFunction() {
 ### 📙 재귀적 타입 한정(recursive type bound)
 
 - 상대적으로 드물긴 하지만, 자기 자신이 들어간 표현식을 사용하여 타입 매개변수의 허용 범위를 한정
-
 - 주로 타입의 자연적 순서를 정하는 Comparable 인터페이스와 함께 쓰임
 
 **✏ #04 예제소스**
