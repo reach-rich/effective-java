@@ -51,3 +51,38 @@ public static <T> UnaryOperator<T> identityFunction() {
 }
 ```
 - 이해가 잘 안됨..???
+
+
+#
+### 3. 재귀적 타입 한정
+
+```java
+public interface Comparable<T> {
+    int compareTo(T o);
+}
+```
+
+- 여기서 타입매개변수 T는 Comparable\<T>를 구현한 타입이 비교할 수 있는 원소의 타입을 정의
+- 실제로 거의 모든 타입은 자신과 같은 타입의 원소와만 비교 가능
+- String은 Comparable\<String>을 구현, Integer는 Comparable\<Integer>를 구현
+- Comparable은 원소의 컬렉션을 입력받는 메서드로 정렬 혹은 검색 -> 컬렉션에 담긴 모든 원소가 상호 비교될 수 있어야 한다!
+
+
+```java
+public static <E extends Comparable<E>> E max(Collection<E> c);
+```
+- 재귀적 타입 한정을 이용해 상호 비교 가능
+
+```java
+public static <E extends Comparable<E>> E max(Collection<E> c) {
+    if (c.isEmpty())
+        throw new IllegalArgumentException("컬렉션이 비어 있습니다.");
+ 
+    E result = null;
+    for (E e : c)
+        if (result == null || e.compareTo(result) > 0)
+            result = Objects.requreNonNull(e);
+    
+    return result;
+}
+```
