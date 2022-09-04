@@ -75,7 +75,7 @@
 #
 ### 3. PECS (producer-extends, consumer-super)
 - 매개변수화 타입 T가 생산자라면 <? extends T>
-- 매개변수화 타입 T가 소비자라면 <? extends T>
+- 매개변수화 타입 T가 소비자라면 <? super T>
 - 와일드카드 타입을 사용하는 것이 기본 원칙
 
 <img width="527" alt="image" src="https://user-images.githubusercontent.com/59560592/188314963-f3b2d5ca-d66b-456d-a73a-99dc74be4df2.png">
