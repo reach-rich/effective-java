@@ -125,4 +125,13 @@
 - 어떤 리스트든 넘기면 명시한 인덱스의 원소들로 교환해준다
 
 - __메서드 선언에 타입 매개변수가 한번만 나오면 와일드 카드로 대체하라__
-- List<?>에는 
+
+<br>
+
+- List<?>에는 null 말고는 들어갈수가 없어서 private 도우미 메서드를 써줘야할 때도 있다
+
+```java
+  private static <E> void swapHelper(List<E> list, int i, int j){
+    list.set(i, list.set(j, list.get(i)));
+  }
+```
