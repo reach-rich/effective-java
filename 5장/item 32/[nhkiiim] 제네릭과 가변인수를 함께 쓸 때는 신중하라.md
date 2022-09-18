@@ -90,3 +90,90 @@ static <T> T[] pickTwo(T a, T b, R c) {
   throw new AsserionErrors(); //도달 불가 (문제 없음)
 }
 ```
+
+- 이 메서드를 본 컴파일러는 T 인스턴스 2개를 담을 varargs 생성
+- 배열은 Object[]가 되고 반환
+
+```java
+public static void main(String[] args){
+  String[] attr = pickTwo("좋은", "빠른", "저렴한"); 
+}
+```
+- 컴파일은 제대로 되지만 컴파일러가 Object[] 를 String[]으로 형변환 하려는 코드가 자동 생성되고
+- 형변화 될 수 없기 때문에 ClassCastException 발생
+
+- 제네릭 varargs 매개변수 배열에 다른 메서드가 접근하면 안전하지 않음
+
+<br>
+
+- 제네릭 varargs 매개변수 배열에 다른 메서드가 접근해도 되는 예외 단 두가지
+- @SafeVarargs로 제대로 어노테이트된 또 다른 varargs에 넘기는 것은 가능
+- 그저 이 배열 내용의 일부를 호출만 하는 (varargs를 받지 않는) 일반 메서드에 넘기기 가능
+
+#
+### 5. 제네릭 varargs 매개변수를 안전하게 사용하는 메서드
+```java
+@SafeVarargs
+static <T> List<T> flatten(List<? extends T>... lists) {
+    List<T> result = new ArrayList<>();
+    for (List<? extends T> list : lists)
+        result.addAll(list);
+    return result;
+}
+```
+- 임의 개수의 리스트를 받아 받은 순서대로 하나의 리스트로 옮겨 반환 
+- @SafeVarargs가 있어 선언하고 사용하는데 경고 X
+
+
+#
+### 6. @SafeVarargs를 사용해야할 때
+- 제네릭이나 매개변수화 타입의 varargs 매개변수를 받는 모든 메서드에 @SafeVarargs를 달아라 (안전하지 않은건 당연히 안됨)
+- 통제할 수 있는 메서드 중 제네릭 varargs 매개변수를 사용하며 힙 오염 경고가 뜨는 메서드가 있면 안전한지 점검해라
+- 다음 두 조건을 모두 만족하는 제네릭 varargs 메서드는 안전하다! 둘 중 하나라도 어기면 수정 ㄱㄱ
+
+<br>
+
+- __varargs 매개변수 배열에 아무것도 저장하지 않는다.__
+- __그 배열(혹은 복제본)을 신뢰할 수 없는 코드에 노출하지 않는다.__
+
+
+#
+### 7. @SafeVarargs 어노테이션이 유일한 정답은 아니다!
+- 실체 배열인 varargs를 List 매개변수로 바꿀 수도 있다
+
+```java
+@SafeVarargs
+static <T> List<T> flatten(List<List<? extends T)> lists) {
+    List<T> result = new ArrayList<>();
+    for (List<? extends T> list : lists)
+        result.addAll(list);
+    return result;
+}
+```
+
+- 정적 팩터리 메서드인 List.of를 활용하면 임의 개수의 인수를 넘길 수 있당
+- List.of(1,2,3) -> @SafeVarargs 달려있음
+- 우리가 직접 어노테이션 안달아고 되고 컴파일러가 안전성 검증도 할 수 있어 좋은 방법
+- 코드가 지저분해지고 좀 느려질 순 있음^^
+
+<br>
+
+- toArray처럼 varargs 메서드를 안전하게 사용하지 못하는 상황에서도 활용 가능
+
+
+```java
+static <T> T[] pickTwo(T a, T b, R c) {
+  switch(ThreadLocalRandom.current.nextInt(3)){
+    case 0 : return List.of(a, b);
+    case 1 : return List.of(a, c);
+    case 2 : return List.of(c, b);
+  }
+  throw new AsserionErrors();
+}
+```
+
+```java
+public static void main(String[] args){
+  List<String> attr = pickTwo("좋은", "빠른", "저렴한"); 
+}
+```
