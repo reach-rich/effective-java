@@ -14,7 +14,7 @@
 - 그래서 메세드를 선언할 때 실체와 불가 타입(제네릭)으로 varags를 선언하면 컴파일 경고!
 
 #
-### 2. 
+### 2. 제네릭 varargs 배열 매개변수에 값을 저장하지 말자
 - 매개변수화 타입의 변수가 타입이 다른 객체를 참조하면 힙 오염 발생!??
 - 컴파일러가 자동 생성한 형변환도 실패 -> 제네릭 타입이 시스템이 약속한 타입 안정성이 흔들림
 
@@ -43,4 +43,50 @@ static void dangerous(List<String>... stringLists) {
     String s = stringLists[0].get(0); // ClassCastException
 }
 ```
-- 이 메세드에서는 형변환하는 곳이 보이지 않아도 ClassCastException
+- 이 메세드에서는 형변환하는 곳이 보이지 않아도 ClassCastException 발생
+- 마지막줄에 컴파일러가 생성한 보이지 않는 형변환이 생기기 때문!
+- 그러므로 제네릭 varargs 배열 매개변수에 값을 저장하는 것은 안전하지 않음
+- 제네릭 배열을 프로그래머사 직접 생성하는 건 안되지만 제네릭 varargs 매개변수를 받는 메서드를 선언할 수 있게 한 이유
+  - 제네릭이나 매개변수화 타입의 varargs 매개변수를 받는 메서드가 실무에서 매우 유용
+
+#
+### 3. 제네릭 가변인수 메서드의 경고
+- 자바 7전에는 제네릭 가변인수 메서드의 경고 숨기는 방법 없었다 
+- @SuppressWarning("unchecked")를 달아 경고 숨겼어야 했음!
+
+<br>
+
+- 자바 7에서는 @SafeVarargs 애너테이션이 추가
+- 제네릭 가변인수 메서드 작성자가 클라이언트 측에서 발생하는 경고를 숨길 수 있음
+- @SafeVarargs 애너테이션은 메서드 작성자가 그 메서드가 타입 안전함을 보장하는 장치
+- 컴파일러는 이걸 믿고 경고를 하지 않음
+- 하지만 메서드가 안전한게 확실하지 않다면 절대 @SafeVarags 달면 안됨
+
+#
+### 4. 제네릭 가변인수 메서드가 안전한지 확신할 수 있는 방법
+- 가변인수 메서드를 호출할 때 varargs 매개변수를 담는 제네릭 배열 생성됨
+- 메서드가 이 배열에 아무것도 저장하지 않고 그 배열의 참조가 밖으로 노출되지 않는다면 타입 안전!
+- 즉!! 순수하게 인수들을 전달하는 일만 한다면(목적대로) 그 메서드는 안전
+
+<br>
+
+- 자신의 제네릭 매개변수 배열의 참조 노출 : 안전하지 않다!
+
+```java
+static <T> T[] toArray(T... args) {
+    return args;
+}
+```
+
+- 메서드가 varags 매개변수 배열을 그대로 반환해 힙오염 전이할 수 있음
+
+```java
+static <T> T[] pickTwo(T a, T b, R c) {
+  switch(ThreadLocalRandom.current.nextInt(3)){
+    case 0 : return toArray(a, b);
+    case 1 : return toArray(a, c);
+    case 2 : return toArray(c, b);
+  }
+  throw new AsserionErrors(); //도달 불가 (문제 없음)
+}
+```
