@@ -17,4 +17,5 @@
 ### 2. 예시
 - 타입별로 즐겨찾는 인스턴스를 저장하고 검색할 수 있는 Favorite 클래스를 생각해보자
 - 각 타입의 Class 객체를 매개변수화한 키 역할로 사용할거임
-- class 리터럴의 타입은 CLass 가 아닌 Class<T>
+- class 리터럴(String.class 같은 거)의 타입은 Class 가 아닌 Class<T\>
+- 
