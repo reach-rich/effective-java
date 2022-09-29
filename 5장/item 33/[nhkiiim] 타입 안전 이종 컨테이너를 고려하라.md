@@ -88,5 +88,53 @@ public class Favorites {
 
 #
 ### 3. Favorites 클래스의 제약
-1) 악의적인 클라이언트가 Class객체를 로타입으로 넘길 때 인스턴스의 타입 안전성이 쉽게 깨짐
+__1) 악의적인 클라이언트가 Class객체를 로타입으로 넘길 때 인스턴스의 타입 안전성이 쉽게 깨짐__
 - 이러한 코드는 컴파일 시 비검사 경고가 뜰 것
+- 동적 형변환을 쓰면 타입 불변식을 어기는 일이 없도록 보장 가능
+
+```java
+public <T> void putFavorite(Class<T> type, T instance) {
+  favorites.put(Objects.requireNonNull(type), type.cast(instance));
+}
+```
+- java.util.Collections 에 checkedSet(), checkedList(), checkedMap() 메서드들도 해당 방식을 적용한 컬렉션 래퍼
+
+__2) 실체화 불가 타입에는 사용 불가__
+- String, String[] 는 저장할 수 있지만 List<String\>은 불가 (String.class 가 아니라 List.class임)
+- 이 제약은 우회할 완벽한 방법은 없음
+- 슈퍼타입 토큰으로 해결하려는 시도가 있으나 주의해서 사용해야함
+
+#
+### 4. 한정적 토큰과 사용
+- Favorites가 사용하는 타입 토큰은 비한정적 -> 어떤 Class 객체도 OK
+- 허용하는 타입을 제한하고 싶다면, 한정적 타입 토큰 활용 가능
+
+```java
+public <T extends Annotation> T getAnnotation(Class<T> annotationType);
+```  
+
+- 런타임에 어노테이션 읽어오는 기능
+- 명시한 타입의 어노테이션이 대상 요소에 달려 있다면 그 애너테이션을 반환, 없다면 Null을 반환 (타입 안전 이종 컨테이너)
+
+<br>
+
+__* Class<?\> 타입의 객체를 한정적 타입 토큰을 받는 메서드에 넘기는 방법__
+
+- Class<? extends Annotation\> 으로 형변환 할 수 있지만 비검사 경고가 뜰 것
+- asSubClass 메서드를 통해 안전하고 동적으로 형변환 가능
+
+```java
+static Annotation getAnnotation(AnnotatedElement element, String annotationTypeName) {
+    Class<?> annotationType = null;
+
+    try {
+        annotationType = Class.forName(annotationTypeName);
+        //Class.forName()은 컴파일 타임에 직접적인 참조 없이 런타임에 동적으로 클래스를 로드
+    } catch (Exception ex) {
+        throw new IllegalArgumentException(ex);
+    }
+
+    return element.getAnnotation(annotationType.asSubclass(Annotation.class));
+}
+```
+- asSubClass() : 호출된 인스턴스 자신의 Class 객체를 인수가 명시한 클래스로 형변환
