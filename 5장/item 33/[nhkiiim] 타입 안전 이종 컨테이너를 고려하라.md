@@ -42,4 +42,25 @@ public static void main(String[] args) {
   System.out.printf("%s %d %s%n", favoriteString, favoriteInteger, favoriteClass.getName());
 }
 ```
+- Favorites 인스턴스는 타입 안전하며 일반적인 맵과 달리 여러 가지 타입의 원소를 담을 수 있기 때문에, 타입 안전 이종 컨테이너라고 할 수 있음
 
+
+<br>
+
+- 타입 안전 이종 컨테이너 - 구현
+
+```java
+public class Favorites {
+    private Map<Class<?>, Object> favorites = new HashMap<>();
+
+    public <T> void putFavorite(Class<T> type, T instance) {
+        favorites.put(Objects.requireNonNull(type), instance);
+    }
+
+    public <T> T getFavorite(Class<T> type) {
+        return type.cast(favorites.get(type));
+    }
+}
+```
+
+- 
