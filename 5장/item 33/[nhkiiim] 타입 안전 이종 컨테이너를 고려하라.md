@@ -14,7 +14,7 @@
 - 이러한 설계방식을 타입 안전 이종 컨테이너 패턴이라고 함
 
 #
-### 2. 예시
+### 2. Favorites 클래스 예시
 - 타입별로 즐겨찾는 인스턴스를 저장하고 검색할 수 있는 Favorite 클래스를 생각해보자
 - 각 타입의 Class 객체를 매개변수화한 키 역할로 사용할거임
 - class 리터럴(String.class 같은 거)의 타입은 Class 가 아닌 Class<T\> (Class<String\>)
@@ -42,7 +42,8 @@ public static void main(String[] args) {
   System.out.printf("%s %d %s%n", favoriteString, favoriteInteger, favoriteClass.getName());
 }
 ```
-- Favorites 인스턴스는 타입 안전하며 일반적인 맵과 달리 여러 가지 타입의 원소를 담을 수 있기 때문에, 타입 안전 이종 컨테이너라고 할 수 있음
+- Favorites 인스턴스는 타입 안전하며 일반적인 맵과 달리 여러 가지 타입의 원소를 담을 수 있음!
+- 타입 안전 이종 컨테이너의 예시가 됨
 
 
 <br>
@@ -63,4 +64,29 @@ public class Favorites {
 }
 ```
 
-- 
+- Map<Class<?\>, Object\> 은 맵이 아니라 키가 비한정적인 와일드카드 타입
+- 모든 키가 서로 다른 매개변수화 타입일 수 있게 됨!
+- 맵의 값 타입은 단순한 Object 이기 때문에 키로 명시한 타입인지 보증하진 않음
+
+  - (어떤게 들어올지 모르는 상황이니 ? 로 받아만 주는 것 : Map<?,?> 로 선언할 순 없겠지만 키가 ?라 OK)
+  - 그렇다면 T 이렇게 안쓰고 ?쓰는 이유는? 까먹었으니 스터디 시간에 물어보기
+
+<br>
+
+- putFavorite 구현은 값이 키 타입이라는 타입 링크는 끊어지지만 getFavorite에서 다시 살아나서 상관 없음
+
+<br>
+
+- getFavorite는 맵에서 꺼낸 Object 객체를 T 타입으로 바꿔야함
+- Class의 cast 메서드를 사용해 이 객체 참조를 class 객체가 가리키는 타입으로 동적 변환
+
+<br>
+
+- cast 메서드는 형변환 연산자의 동적 버전
+- 주어진 인수가 Class 객체가 알려주는 타입의 인스턴스인지 검사한 다음, 맞다면 그대로 반환하고 아니면 ClassCastException을 던짐
+- 맵 안의 값이 해당 키의 타입과 항상 일치함을 보장
+
+#
+### 3. Favorites 클래스의 제약
+1) 악의적인 클라이언트가 Class객체를 로타입으로 넘길 때 인스턴스의 타입 안전성이 쉽게 깨짐
+- 이러한 코드는 컴파일 시 비검사 경고가 뜰 것
