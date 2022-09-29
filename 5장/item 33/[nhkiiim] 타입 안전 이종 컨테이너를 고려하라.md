@@ -17,5 +17,29 @@
 ### 2. 예시
 - 타입별로 즐겨찾는 인스턴스를 저장하고 검색할 수 있는 Favorite 클래스를 생각해보자
 - 각 타입의 Class 객체를 매개변수화한 키 역할로 사용할거임
-- class 리터럴(String.class 같은 거)의 타입은 Class 가 아닌 Class<T\>
-- 
+- class 리터럴(String.class 같은 거)의 타입은 Class 가 아닌 Class<T\> (Class<String\>)
+- 컴파일타임 타입 정보와 런타임 타입 정보를 알아내기 위해 메서드들이 주고받는 class 리터럴을 타입 토큰(type token)이라고 함
+
+```java
+public class Favorites {
+  public <T> void putFavorite(Class<T> type, T instance);
+  public <T> T getFavorite(Class<T> type);
+}
+```
+
+```java
+public static void main(String[] args) {
+  Favorites f = new Favorites();
+  
+  f.putFavorite(String.class, "Java");
+  f.putFavorite(Integer.class, 1234);
+  f.putFavorite(Class.class, Favorites.class);
+
+  String favoriteString = f.getFavorite(String.class);
+  int favoriteInteger = f.getFavorite(Integer.class);
+  Class<?> favoriteClass = f.getFavorite(Class.class);
+
+  System.out.printf("%s %d %s%n", favoriteString, favoriteInteger, favoriteClass.getName());
+}
+```
+
