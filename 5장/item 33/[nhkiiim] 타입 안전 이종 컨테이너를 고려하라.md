@@ -15,7 +15,8 @@
 
 #
 ### 2. Favorites 클래스 예시
-- 타입별로 즐겨찾는 인스턴스를 저장하고 검색할 수 있는 Favorite 클래스를 생각해보자
+__1) 타입별로 즐겨찾는 인스턴스를 저장하고 검색할 수 있는 Favorite 클래스__
+
 - 각 타입의 Class 객체를 매개변수화한 키 역할로 사용할거임
 - class 리터럴(String.class 같은 거)의 타입은 Class 가 아닌 Class<T\> (Class<String\>)
 - 컴파일타임 타입 정보와 런타임 타입 정보를 알아내기 위해 메서드들이 주고받는 class 리터럴을 타입 토큰(type token)이라고 함
@@ -48,7 +49,7 @@ public static void main(String[] args) {
 
 <br>
 
-- 타입 안전 이종 컨테이너 - 구현
+__2) 타입 안전 이종 컨테이너 - 구현__
 
 ```java
 public class Favorites {
