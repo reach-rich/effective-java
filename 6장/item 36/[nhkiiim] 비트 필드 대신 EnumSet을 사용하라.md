@@ -36,4 +36,21 @@ text.applyStyles(STYLE_BOLD | STYLE_ITALIC);
 - Set 인터페이스 완벽 구현
 - 타입 안전
 - 어떤 Set 구현체와도 같이 사용 가능
-- 
+- 하지만 EnumSet의 내부도 비트 백터로 구현되어 있음
+- 원소가 64개 이하라면 long 변수 하나로 표현 가능하다
+- removeAll이나 retainAll과 같은 대량작업을 효율적으로 할 수 있다는 비트 필드의 장점을 가지면서
+- EnumSet이 난해한 작업을 처리해줘 사용하기 좋다
+
+```java
+public class Text {
+   public enum Style { BOLD, ITALIC, UNDERLINE, STRIKETHROUGH }
+   
+   // 어떤 Set을 넘겨도 되나, EnumSet이 가장 좋다.
+   public void applyStyles(Set<Style> styles) { ... }
+}
+
+//집합 생성을 위한 of 메서드
+text.applyStyles(EnumSet.of(Style.BOLD, Style.ITALIC));
+```
+
+- EnumSet<Style> 이 아닌 Set<Style>을 받은 이유는 인터페이스로 받는게 일반적으로 좋은 습관이기 떄문 !
