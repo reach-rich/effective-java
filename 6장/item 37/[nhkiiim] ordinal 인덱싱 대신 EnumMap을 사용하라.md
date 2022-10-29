@@ -45,6 +45,12 @@ public static void usingOrdinalArray(List<Plant> garden) {
 }
 ```
 
-- 동작은 하지만 문제가 많다
+동작은 하지만 문제가 많다
 
-1) 배열은 제네릭과 호환되지 않아 비검사 형변환을 수행해야 함
+(1) 배열은 제네릭과 호환되지 않아 비검사 형변환을 수행해야 함
+`Set<Plant>[] plantsByLifeCycle = (Set<Plant>[]) new Set[LifeCycle.values().length];`
+
+(2) 배열은 각 인덱스의 의미를 모르니 출력 결과에 직접 레이블을 달아야함
+`System.out.printf("%s : %s%n", LifeCycle.values()[i], plantsByLifeCycle[i]);`
+
+(3) __정확한 정수값을 사용한다는 것을 직접 보증해야한다__
