@@ -29,17 +29,22 @@ __ordinal()을 배열 인덱스로 사용__ `(절대 따라하지 말 것)`
 
 ```java
 public static void usingOrdinalArray(List<Plant> garden) {
-    Set<Plant>[] plantsByLifeCycle = (Set<Plant>[]) new Set[LifeCycle.values().length];
-    for (int i = 0 ; i < plantsByLifeCycle.length ; i++) {
-        plantsByLifeCycle[i] = new HashSet<>();
-    }
+  Set<Plant>[] plantsByLifeCycle = (Set<Plant>[]) new Set[LifeCycle.values().length];
+  
+  for(int i = 0 ; i < plantsByLifeCycle.length ; i++) {
+    plantsByLifeCycle[i] = new HashSet<>();
+  }
 
-    for (Plant plant : garden) {
-        plantsByLifeCycle[plant.lifeCycle.ordinal()].add(plant);
-    }
+  for(Plant plant : garden) {
+    plantsByLifeCycle[plant.lifeCycle.ordinal()].add(plant);
+  }
 
-    for (int i = 0 ; i < plantsByLifeCycle.length ; i++) {
-        System.out.printf("%s : %s%n", LifeCycle.values()[i], plantsByLifeCycle[i]);
-    }
+  for (int i = 0 ; i < plantsByLifeCycle.length ; i++) {
+    System.out.printf("%s : %s%n", LifeCycle.values()[i], plantsByLifeCycle[i]);
+  }
 }
 ```
+
+- 동작은 하지만 문제가 많다
+
+1) 배열은 제네릭과 호환되지 않아 비검사 형변환을 수행해야 함
