@@ -65,7 +65,7 @@ public enum ExtendedOperation implements Operation {
   
   private final String symbol;
   
-  BasicOperation(String symbol) { this.symbol = symbol; }
+  ExtendedOperation(String symbol) { this.symbol = symbol; }
   
   @Override
   public String toString() { return symbol; }
