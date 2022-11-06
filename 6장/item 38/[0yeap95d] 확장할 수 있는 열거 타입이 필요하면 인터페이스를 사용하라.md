@@ -117,7 +117,7 @@ public enum ExtendedOperation implements Operation {
 
 ### 📗 한정적 와일드카드 사용
 
-**: `Class` 객체 대신 한정적 와일드카드 타입인 `Collection<? extends Operation>`을 넘기는 방법**
+**: Class 객체 대신 한정적 와일드카드 타입인 Collection<? extends Operation>을 넘기는 방법**
 
 <br>
 
