@@ -42,7 +42,8 @@ public @interface ExceptionTest {
 
 <br>
 
-__배열 매개변수를 받는 어노테이션 타입__
+#
+### 4. 배열 매개변수를 받는 어노테이션 타입
 
 ```java
 @Retention(RetentionPolicy.RUNTIME)
@@ -57,9 +58,22 @@ public @interface ExceptionTest {
 public static void test() { ... }
 ```
 
-<br>
+#
+### 5. @Repeatable을 사용한 어노테이션 타입
 
-__@Repeatable을 사용한 어노테이션 타입__
+자바8부터는 단일 요소에 어노테이션을 반복적으로 달 수 있는 @Repeatable 메타 애너테이션을 제공
+
+__@Repeatable 사용 시 주의점__
+
+(1) @Repeatable을 명시한 어노테이션 반환하는 컨테이너 어노테이션 하나 더 정의
+    - @Repeatable에 해당 컨테이너 어노테이션 class 객체를 매개변수로 전달
+
+(2) 컨테이너 어노테이션은 내부 어노테이션 타입의 배열을 반환하는 value 메서드를 정의
+
+(3) 적절한 @Retention과 @Target을 명시 (그렇지 않으면 컴파일되지 않음)
+
+
+<br>
 
 컨테이너 어노테이션 타입을 사용해 배열로 선언하는 대신 어노테이션을 여러번 사용 가능
 
