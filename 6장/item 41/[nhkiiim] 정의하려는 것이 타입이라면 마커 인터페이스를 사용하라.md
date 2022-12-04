@@ -12,6 +12,7 @@ public interface Serializable {
 }
 ```
 Serializable 인터페이스에는 선언된 변수나 메소드가 없다.
+
 Serializable는 자신을 구현할 클래스의 인스턴스는 직렬화(=ObjectOutputStream을 통해 쓸 수 있다)할 수 있다고 알려준다.
 
 #
