@@ -1,13 +1,3 @@
----
-layout: post
-title: Item 41. 정의하려는 것이 타입이라면 마커 인터페이스를 사용하라
-date: 2022-12-04 14:47 +0900
-categories: [Book, Effective Java]
-tags: [Java, Effective Java, Annotation]
----
-
-
-
 Effective Java의 41번째 아이템 "정의하려는 것이 타입이라면 마커 인터페이스를 사용하라"를 읽고 정리한 내용을 포스팅합니다.
 
 ## 1. 마커 인터페이스
