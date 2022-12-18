@@ -83,18 +83,10 @@ words.sort(comparingInt(String::length));
 
 ```java
 public enum Operation {
-    PLUS("+") {
-		public doubld apply(double x, double y) { return x + y; }
-    },
-    MINUS("-") {
-        public doubld apply(double x, double y) { return x - y; }
-    },
-    TIMES("*") {
-        public doubld apply(double x, double y) { return x * y; }
-    },
-    DIVIDE("/") {
-        public doubld apply(double x, double y) { return x / y; }
-    };
+    PLUS("+") { public doubld apply(double x, double y) { return x + y; } },
+    MINUS("-") { public doubld apply(double x, double y) { return x - y; } },
+    TIMES("*") { public doubld apply(double x, double y) { return x * y; } },
+    DIVIDE("/") { public doubld apply(double x, double y) { return x / y; } };
     
     private final String symbol;
     
