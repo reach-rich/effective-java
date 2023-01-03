@@ -56,4 +56,21 @@ public interface BiPredicate<T, U> {
 #
 ### 2. 표준 함수형 인터페이스
 `java.util.function`에는 총 43개의 인터페이스가 존재한다.
+그 중 기본인터페이스 6개에 대해 알아보자.
+
+- UnaryOperator : 반환값과 인수의 타입이 같은 함수 (인수값이 하나)
+- BinaryOperator : 반환값과 인수의 타입이 같은 함수 (인수값이 두개)
+- Predicate : 인수값 하나를 받아 boolean 반환
+- Function : 인수값과 반환타입이 다른 함수
+- Supplier : 인수를 받지 않고 값을 반환하는 함수
+- Consumer : 인수값을 하나 받고 반환값은 없는 함수
+
+
+기본 인터페이스는 기본 타입인 int, log, double용으로 각 3개씩 변형이 생긴다.
+
+Function 인터페이스는 기본 타입을 반환하는 변형이 총 9개가 더 있다.
+
+
+
+
 
