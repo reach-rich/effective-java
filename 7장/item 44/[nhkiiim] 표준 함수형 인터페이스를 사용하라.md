@@ -13,24 +13,32 @@
 
 필요한 용도에 맞는 표준 함수가 있다면, 직접 구현하지 말고 `java.util.function` 패키지의 표준 함수형 인터페이스를 활용하자
 
-__(1) 이전 예시__
+__(1) 기본 메서드 재정의 예시__
+
+LinkedHashMap의 removeEldestEntry 재정의하면 put 메서드가 호출해 원소 100개를 유지하는 캐시로 사용할 수 있다.
+
 ```java
-//LinkedHashMap의 removeEldestEntry : put 메서드가 호출해 원소 100개를 유지한다
 protected boolean removeEldestEntry(Map.Entry<K,V> eldest){
   return size() > 100;
 }
 ```
 
-__(2) 불필요한 함수형 인터페이스 예시__
+<br>
+
+__(2) 함수형 인터페이스 만들어 사용하기__
+
+인터페이스를 만들어 사용해도 잘 동작하지만, 자바 표준 라이브러리에 이미 같은 모양의 인터페이스가 존재하기 때문에 직접 구현할 필요가 없다.
+
 ```java
 @FunctionalInterface interface EldestEntryRemovalFunction<K,V>{
   boolean remove(Map<K,V> map, Map.Entry<K,V> eldest);
 }
 ```
 
-(2)의 인터페이스도 잘 동작하지만, 자바 표준 라이브러리에 이미 같은 모양의 인터페이스가 존재하기 때문에 직접 구현할 필요가 없다.
 
-__(3) 표준 함수형 인터페이스 예시__
+<br>
+
+__(3) 표준 함수형 인터페이스 사용__
 ```java
 // BiPredicate<Map<K,V>, Map.Entry<K,V>>
 @FunctionalInterface
