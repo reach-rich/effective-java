@@ -145,23 +145,12 @@ p가 소수이면 해당 메르센 수도 소수일 수 있는데 이 때의 수
 
 그래서 메르센 소수를 출력하는 프로그램은 다음과 같습니다. -->
 
-이렇게도 쓸 수 있을거 같은데....
-
 ```java
    public static void main(String[] args) {
       primes().map(p -> TWO.pow(p.intValueExact()))
               .filter(mersenne -> mersenne.isProbablePrime(50))
               .limit(20)
               .forEach(System.out::println);
-   }
-```
-
-```java
-   public static void main(String[] args) {
-      primes().filter(mersenne -> mersenne.isProbablePrime(50))
-              .limit(20)
-              .map(p -> TWO.pow(p.intValueExact()))
-              .forEach(mp -> mp.bitLength() + ": " + mp);
    }
 ```
 
