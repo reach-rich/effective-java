@@ -53,6 +53,28 @@ try (Stream<String> words = new Scanner(file).tokens()) {
 
 
 #
-### 3. `java.util.stream.Collectors`
+### 3. 수집기(collector)
 
-위의 예시에서 수집기(collector)를 사용하는데 스트림을 사용하려면 꼭 배워야하는 개념
+위의 예시에서 수집기(collector)를 사용하는데, 스트림을 사용하려면 꼭 배워야하는 개념이다.
+
+수집기가 생성하는 객체는 일반적으로 컬렉션이며 그래서 "collector"라는 이름을 쓴다.
+
+`java.util.stream.Collectors` 클래스는 메서드를 39개 가지고 있고 복잡한 세부 내용을 몰라도 이 API를 잘 활용할 수 있다.
+
+#### 💡 collector의 종류
+
+수집기는 총 세가지로 `toList()` (리스트 반환), `toSet()` (집합 반환), `toCollection(collectorFactory)` (지정한 컬렉션 반환)이 있다.
+
+```java
+List<String> topTen = freq.keySet().stream()
+    .sorted(comparing(freq::get).reversed())
+    .limit(10)
+    .collect(toList());
+```
+
+- 마지막 toList는 Collectors의 메서드로 정적 임포트하여 사용하면 스트림 파이트라인 가독성이 좋아져 많이 사용
+
+이외에도 다양한 메서드들이 존재하며 [stream.Collectors의 API 문서](https://docs.oracle.com/javase/10/docs/api/java/util/stream/Collectors.html)를 참고하자
+> 그 중 가장 중요한 수집기는 toList, toSet, toMap, groupingBy, joining 이다!
+
+
