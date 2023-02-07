@@ -96,7 +96,7 @@ List<String> topTen = freq.keySet().stream()
 
 - `toMap(keyMapper, valueMapper)` 형태로 사용
 
-**✏ #04 예제소스 | toMap 수집기를 사용하는 문자열을 열거 타입 상수에 매핑 **
+**✏ #04 예제소스 | toMap 수집기를 사용하는 문자열을 열거 타입 상수에 매핑**
 
 ```java
 private static final Map<String, Operation> stringToEnum =
@@ -149,7 +149,6 @@ toMap(keyMapper, valueMapper, (oldVal, newVal) -> newVal)
 words.collect(groupingBy(word -> alphabetize(word)))
 ```
 
-<br>
 
 - 리스트 외의 값을 갖는 맵을 생성하려면, 분류 함수와 함께 **다운스트림(downstream)** 수집기도 명시
 
@@ -164,7 +163,6 @@ words.collect(groupingBy(word -> alphabetize(word)))
   >    .collect(groupingBy(String::toLowerCase, counting()));
   >```
 
-<br>
 
 - **다운스트림**와 **맵 팩터리** 지정
 
