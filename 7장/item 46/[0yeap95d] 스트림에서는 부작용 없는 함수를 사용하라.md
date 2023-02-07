@@ -145,9 +145,9 @@ toMap(keyMapper, valueMapper, (oldVal, newVal) -> newVal)
 - 분류 함수는 입력받은 원소가 속하는 카테고리를 반환
 - 이 카테고리가 해당 원소의 맵 키로 사용
 
-```java
-words.collect(groupingBy(word -> alphabetize(word)))
-```
+  >```java
+  >words.collect(groupingBy(word -> alphabetize(word)))
+  >```
 
 
 - 리스트 외의 값을 갖는 맵을 생성하려면, 분류 함수와 함께 **다운스트림(downstream)** 수집기도 명시
