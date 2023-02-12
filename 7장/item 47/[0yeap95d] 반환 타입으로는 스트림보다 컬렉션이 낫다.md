@@ -72,7 +72,7 @@ public static <E> Stream<E> streamOf(Iterable<E> iterable) {
 
 <br>
 
-**✔ 하지만 단지 컬렉션을 반환한다는 이유로 덩치 큰 시퀀스를 메모리에 올려서는 안됨! **
+**✔ 하지만 단지 컬렉션을 반환한다는 이유로 덩치 큰 시퀀스를 메모리에 올려서는 안됨!**
 
 <br>
 
