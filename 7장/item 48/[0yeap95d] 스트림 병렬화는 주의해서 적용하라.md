@@ -80,7 +80,9 @@ static Stream<BigInteger> primes() {
 >
 > - 예컨대 `Stream`의 `reduce` 연산에 건네지는 `accumulater`(누적기)와 `combiner`(결합기) 함수는 반드시 결합법칙을 만족하고, 간섭받지 않고, 상태를 갖지 않아야 함
 
-<br>**4️⃣ 스트림 병렬화 정렬**
+<br>
+
+**4️⃣ 스트림 병렬화 정렬**
 
 > 위의 메르센 소수는 완료되더라도 순서가 올바르지 않을 수 있음
 >
@@ -116,7 +118,7 @@ static Stream<BigInteger> primes() {
 
 ### 📖 스트림 파이프라인 병렬화의 옳은 예
 
-**✏ #01 예제소스 | 소스 계산 스트림 파이프라인 - 병렬화에 적합**
+**✏ #02 예제소스 | 소스 계산 스트림 파이프라인 - 병렬화에 적합**
 
 ```java
 static long pi(long n) {
@@ -131,7 +133,7 @@ static long pi(long n) {
 
 <br>
 
-**✏ #01 예제소스 | 소수 계산 스트림 파이프라인 - 병렬화 버전**
+**✏ #03 예제소스 | 소수 계산 스트림 파이프라인 - 병렬화 버전**
 
 ```java
 static long pi(long n) {
