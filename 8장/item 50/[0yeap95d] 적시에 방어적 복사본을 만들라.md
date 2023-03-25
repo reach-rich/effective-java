@@ -36,7 +36,7 @@ public final class Period {
 }
 ```
 
->시작 시각이 종료 시각보다 늦을 수 없다는 불변식이 잘 지켜질 것 같지만, Date가 가변이라는 점을 이용해 깨뜨릴 수 있음
+>시작 시각이 종료 시각보다 늦을 수 없다는 불변식이 잘 지켜질 것 같지만, `Date`가 가변이라는 점을 이용해 깨뜨릴 수 있음
 
 <br>
 
@@ -59,9 +59,9 @@ Period p	= new Period(start, end);
 end.setYear(78);	// p의 내부를 수정
 ```
 
->Date 대신 불변인 Instant를 사용하여 해결 가능
+>`Date` 대신 불변인 `Instant`를 사용하여 해결 가능
 >
->Date는 낡은 API이므로 새로운 코드를 작성할 때는 더 이상 사용하면 안됨
+>`Date`는 낡은 API이므로 새로운 코드를 작성할 때는 더 이상 사용하면 안됨
 >
 >그러나 API와 내부구현에 낡은 코드의 잔재가 남아있음
 
@@ -92,7 +92,7 @@ public Period(Date start, Date end) {
 >
 >방어적 복사를 매개변수 유효성 검사 전에 수행하면 이러한 위험을 없앨 수 있음
 
-* 검사시점/사용시점(time-of-check/time-of-use)
+***검사시점/사용시점(time-of-check/time-of-use)**
 
 <br>
 
