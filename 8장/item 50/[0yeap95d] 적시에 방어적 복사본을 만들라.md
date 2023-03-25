@@ -92,7 +92,7 @@ public Period(Date start, Date end) {
 >
 >방어적 복사를 매개변수 유효성 검사 전에 수행하면 이러한 위험을 없앨 수 있음
 
-** 검사시점/사용시점(time-of-check/time-of-use)*
+* 검사시점/사용시점(time-of-check/time-of-use)
 
 <br>
 
