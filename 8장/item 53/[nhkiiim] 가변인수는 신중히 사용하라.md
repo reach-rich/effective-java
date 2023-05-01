@@ -46,7 +46,7 @@ static int min(int... args) {
 > 매개변수 2개를 받이시영 (for-each문도 사용가능)
 
 ```java
-static int min(int firstArg, int remainingArgs) {
+static int min(int firstArg, int... remainingArgs) {
   int min = firstArg;
   
   for (int arg : remainingArgs) {
