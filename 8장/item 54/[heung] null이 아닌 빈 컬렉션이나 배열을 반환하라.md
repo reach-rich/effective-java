@@ -1,13 +1,3 @@
----
-layout: post
-title: Item 54. null이 아닌, 빈 컬렉션이나 배열을 반환하라
-date: 2023-05-08 21:52 +0900
-categories: [Book, Effective Java]
-tags: [Java, Effective Java, Method]
----
-
-
-
 Effective Java의  54번째 아이템 "null이 아닌, 빈 컬렉션이나 배열을 반환하라"를 읽고 정리한 내용을 포스팅합니다.
 
 <br>
