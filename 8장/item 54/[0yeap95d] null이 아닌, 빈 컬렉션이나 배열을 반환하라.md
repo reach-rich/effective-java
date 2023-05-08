@@ -17,7 +17,7 @@ public List<Cheese> getCheeses() {
 }
 ```
 
->`null`을 반환한다면, 클라이언트는 이 `null `상황을 처리하는 코드를 추가로 작성해야 함
+>`null`을 반환한다면, 클라이언트는 이 `null`상황을 처리하는 코드를 추가로 작성해야 함
 >
 >```java
 >List<Cheese> cheeses = shop.getCheeses();
@@ -136,6 +136,6 @@ return cheesesInStock.toArray(new Cheese[cheesesInStock.size()]);
 
 **그렇다고 성능이 좋은 것도 아니다**
 
-
+<br>
 
 **끝.**
