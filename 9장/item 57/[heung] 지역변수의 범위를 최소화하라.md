@@ -1,13 +1,3 @@
----
-layout: post
-title: Item 57. 지역변수의 범위를 최소화하라
-date: 2023-06-07 22:25 +0900
-categories: [Book, Effective Java]
-tags: [Java, Effective Java, Method]
----
-
-
-
 Effective Java의  57번째 아이템 "지역변수의 범위를 최소화하라"를 읽고 정리한 내용을 포스팅합니다.
 
 <br>
