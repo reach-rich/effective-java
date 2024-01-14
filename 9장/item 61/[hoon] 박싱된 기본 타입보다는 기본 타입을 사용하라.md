@@ -1,13 +1,3 @@
----
-title: Item 61. 박싱된 기본 타입보다는 기본 타입을 사용하라
-categories: [Effective-Java]
-tags: [item 61]
-toc: true
-
-date: 2023-11-07
-last_modified_at: 2023-11-07
----
-
 ## 1. 들어가기
 
 자바의 데이터 타입은 크게 두 가지로 나눌 수 있습니다.
