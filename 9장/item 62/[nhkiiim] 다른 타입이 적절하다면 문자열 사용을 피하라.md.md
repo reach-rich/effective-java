@@ -42,7 +42,7 @@ public class ThreadLocal {
 > 문자열 대신 위조할 수 없는 키를 사용하자 -> 권한(capacity)
 
 ```java
-public class ThreadLocal {
+public class ThreadLocal<T> {
   public ThreadLocal(); 
   public void set(T value);
   public T get();
