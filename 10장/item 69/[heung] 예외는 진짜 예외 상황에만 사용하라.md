@@ -2,7 +2,7 @@
 
 <br>
 
-```
+```java
 try {
   int i = 0;
   while (true)
@@ -16,7 +16,7 @@ try {
 
 <br>
 
-```
+```java
 for (Mountain m : range)
   m.climb();
 ```
