@@ -86,4 +86,5 @@ public static void main(String[] args) {
 
 #
 ### 👽 예시 2 : 다른 스레드에게 구독해지를 부탁하는 관찰자
+> removeObserver를 직접 호출하지 않고 실행자 서비스를 사용해 다른 스레드에게 부탁하는 관찰자
   
