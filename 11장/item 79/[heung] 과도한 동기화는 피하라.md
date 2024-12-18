@@ -98,8 +98,6 @@ public static void main(String[] args) {
             if (e == 23) {
                 ExecutorService exec = Executors.newSingleThreadExecutor();
                 try {
-                    // 여기서 lock이 발생한다. (메인 스레드는 작업을 기리고 있음)
-                    // 특정 태스크가 완료되기를 기다린다. (submit의 get 메서드)
                     exec.submit(() -> s.removeObserver(this)).get();
                 } catch (ExecutionException | InterruptedException ex) {
                     throw new AssertionError(ex);
